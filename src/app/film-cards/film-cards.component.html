@@ -1,3 +1,11 @@
-<div class="films-card__container" *ngFor="let card of filmCards">
-    <app-film-card [id]="card.id" [name]="card.name" [year]="card.year" [description]="card.description" [genre]="card.genre"></app-film-card>
+<div class="films-card__container">
+  <app-film-card
+    *ngFor="let card of filmCards"
+    [id]="card.id"
+    [name]="card.name"
+    [year]="card.year"
+    [description]="card.description"
+    [genre]="card.genre"
+    (click)="openFilmCard(card)"
+  ></app-film-card>
 </div>

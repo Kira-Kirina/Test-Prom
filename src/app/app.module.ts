@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilmCardsComponent } from './film-cards/film-cards.component';
 import { FilmCardComponent } from './film-card/film-card.component';
 import { BestFilmComponent } from './best-film/best-film.component';
+import { DialogCardComponent } from './dialog-card/dialog-card.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -13,8 +15,9 @@ import { BestFilmComponent } from './best-film/best-film.component';
     FilmCardsComponent,
     FilmCardComponent,
     BestFilmComponent,
+    DialogCardComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule],
+  imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule],
   providers: [],
   bootstrap: [AppComponent],
 })

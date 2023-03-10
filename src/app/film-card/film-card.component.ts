@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GENRES_MOCK } from 'src/genres-mock';
+// import { IFilmCard } from 'src/models/film-card.interface';
+import { FilmCardService } from '../services/film-card.service';
 
 @Component({
   selector: 'app-film-card',
@@ -15,14 +17,16 @@ export class FilmCardComponent implements OnInit {
   genres = GENRES_MOCK;
   filmGenres: string[] = [];
 
-  constructor() {}
+  constructor(private filmCardService: FilmCardService) {}
   ngOnInit(): void {
-    this.genres.forEach((item) => {
-      for (const [key, value] of Object.entries(item)) {
-        if (this.genre.includes(+key)) {
-          this.filmGenres.push(value);
-        }
-      }
-    });
+    this.filmCardService.getGenres(this.genres, this.genre, this.filmGenres);
+
+    // this.genres.forEach((item) => {
+    //   for (const [key, value] of Object.entries(item)) {
+    //     if (this.genre.includes(+key)) {
+    //       this.filmGenres.push(value);
+    //     }
+    //   }
+    // });
   }
 }
