@@ -1,4 +1,4 @@
-<div class="films-card__container">
+<!-- <div class="films-card__container">
   <app-film-card
     *ngFor="let card of filmCards"
     [id]="card.id"
@@ -6,6 +6,13 @@
     [year]="card.year"
     [description]="card.description"
     [genre]="card.genre"
+    (click)="openFilmCard(card)"
+  ></app-film-card>
+</div> -->
+<div class="films-card__container">
+  <app-film-card
+    *ngFor="let card of filmCards"
+    [card]="card"
     (click)="openFilmCard(card)"
   ></app-film-card>
 </div>

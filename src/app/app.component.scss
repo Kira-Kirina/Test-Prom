@@ -1,12 +1,10 @@
-@use '../mixins' as *;
-
 .container {
-    max-width: 1440px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 37px 25px 44px;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 37px 25px 44px;
 }
-.title {
-    @include font-montserrat(600,20px,22px);
-    margin-bottom: 15px;
+app-film-cards {
+  margin-bottom: 40px;
+  display: block;
 }

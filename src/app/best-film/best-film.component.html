@@ -1,1 +1,3 @@
-<p>best-film works!</p>
+<p *ngIf="!card">Фильм не выбран!</p>
+
+<app-film-card *ngIf="card" [card]="card"></app-film-card>

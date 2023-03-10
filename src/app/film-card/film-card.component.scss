@@ -1,6 +1,7 @@
 @use "../../mixins" as *;
 
 .film-card__container {
+  position: relative;
   width: 190px;
   height: 400px;
   padding: 15px 20px;
@@ -30,4 +31,25 @@
 }
 .card-year {
   @include font-montserrat();
+}
+.heart {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+  }
+  img {
+    object-fit: cover;
+    width: 20px;
+    height: 18px;
+  }
 }

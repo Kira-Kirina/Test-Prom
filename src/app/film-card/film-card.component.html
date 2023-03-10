@@ -1,12 +1,19 @@
 <div class="film-card__container">
   <div class="img__container">
-    <img src="../../images/{{ id }}.jpeg" alt="{{ name }}" class="film-img" />
+    <img
+      src="../../images/{{ card.id }}.jpeg"
+      alt="{{ card.name }}"
+      class="film-img"
+    />
   </div>
-  <h4 class="card-title">{{ name }}</h4>
+  <h4 class="card-title">{{ card.name }}</h4>
   <div class="card-genres">
     <span class="card-genre" *ngFor="let genre of filmGenres; let i = index"
       >{{ genre }}{{ i === filmGenres.length - 1 ? "" : ", " }}</span
     >
   </div>
-  <h6 class="card-year">{{ year }}</h6>
+  <h6 class="card-year">{{ card.year }}</h6>
+  <div class="heart" (click)="setBestFilm($event)">
+    <img src="../../images/heart/heart-empty.svg" alt="heart" />
+  </div>
 </div>
