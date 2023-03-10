@@ -1,0 +1,5 @@
+.films-card__container {
+    display: grid;
+    grid-template-columns: repeat(4fr);
+    grid-gap: 10px;
+}
