@@ -8,12 +8,26 @@
   </div>
   <h4 class="card-title">{{ card.name }}</h4>
   <div class="card-genres">
-    <span class="card-genre" *ngFor="let genre of filmGenres; let i = index"
-      >{{ genre }}{{ i === filmGenres.length - 1 ? "" : ", " }}</span
+    <span
+      class="card-genre"
+      *ngFor="let genre of card.mappedGenres; let i = index"
+      ><ng-container *ngIf="card.mappedGenres"
+        >{{ genre
+        }}{{ i === card.mappedGenres.length - 1 ? "" : ", " }}</ng-container
+      ></span
     >
   </div>
   <h6 class="card-year">{{ card.year }}</h6>
   <div class="heart" (click)="setBestFilm($event)">
-    <img src="../../images/heart/heart-empty.svg" alt="heart" />
+    <img
+      *ngIf="!card.isBest"
+      src="../../images/heart/heart-empty.svg"
+      alt="heart"
+    />
+    <img
+      *ngIf="card.isBest"
+      src="../../images/heart/heart-filled.svg"
+      alt="heart"
+    />
   </div>
 </div>

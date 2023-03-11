@@ -14,18 +14,25 @@ export class FilmCardComponent implements OnInit {
   // @Input() year!: number;
   // @Input() description!: string;
   // @Input() genre!: number[];
-
   @Input() card!: IFilmCard;
-
+  bestFilmCard!: IFilmCard;
   genres = GENRES_MOCK;
-  filmGenres: string[] = [];
+  // filmGenres: string[] = [];
 
   constructor(private filmCardService: FilmCardService) {}
   ngOnInit(): void {
+    this.bestFilmCard = JSON.parse(localStorage.getItem('card')!);
+
+    if (this.card.id === this.bestFilmCard?.id) {
+      this.card.isBest = true;
+    } else {
+      this.card.isBest = false;
+    }
+
     this.filmCardService.getGenres(
       this.genres,
       this.card.genre,
-      this.filmGenres
+      (this.card.mappedGenres = [])
     );
 
     // this.genres.forEach((item) => {
@@ -39,6 +46,7 @@ export class FilmCardComponent implements OnInit {
 
   setBestFilm(e: Event) {
     e.stopPropagation();
+    this.card.isBest = true;
     this.filmCardService.setBestFilm(this.card);
   }
 }

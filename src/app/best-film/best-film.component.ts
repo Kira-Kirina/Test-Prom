@@ -12,9 +12,8 @@ export class BestFilmComponent implements OnInit {
 
   constructor(private filmCardService: FilmCardService) {}
   ngOnInit(): void {
-     this.filmCardService.getBestFilm().subscribe(
-      card => this.card = card
-    );
+    this.card = JSON.parse(localStorage.getItem('card')!);
+    this.filmCardService.getBestFilm().subscribe((card) => (this.card = card));
     console.log(this.card);
   }
 }

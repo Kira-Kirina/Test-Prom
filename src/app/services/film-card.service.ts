@@ -29,15 +29,14 @@ export class FilmCardService {
 
   setBestFilm(card: IFilmCard) {
     console.log(card);
-    this.beastFilmSubject.next(card);
     const cardJSON = JSON.stringify(card);
     localStorage.setItem('card', cardJSON);
+    this.beastFilmSubject.next(card);
   }
 
   getBestFilm(): Observable<IFilmCard> {
-    return this.beastFilmObservable.pipe(
-      tap(() => JSON.parse(localStorage.getItem('card')!))
-    );
+    // JSON.parse(localStorage.getItem('card')!);
+    return this.beastFilmObservable;
     // return JSON.parse(localStorage.getItem('card')!);
   }
 }
