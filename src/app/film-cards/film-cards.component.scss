@@ -1,5 +1,5 @@
 .films-card__container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   grid-gap: 10px;
 }

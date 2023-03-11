@@ -26,24 +26,6 @@ export class FilmCardService {
   constructor() {}
   getFilmData(): Observable<IFilmCard[]> {
     return this.filmsObservable;
-    // return of(this.FILMS_MOCK).pipe(
-    //   map((filmCards) => {
-    //     let cardId: number | null = null;
-    //     this.bestFilmObservable.subscribe((data) => {
-    //       console.log(cardId);
-    //       console.log(data?.id);
-    //       if (data?.id) {
-    //         cardId = data?.id;
-    //       }
-    //     });
-    //     filmCards.map((item) => {
-    //       if (cardId !== item.id) {
-    //         item.isBest = false;
-    //       }
-    //     });
-    //     return filmCards;
-    //   })
-    // );
   }
   // getFilmData(): Observable<IFilmCard[]> {
   //   return of(this.FILMS_MOCK);
@@ -59,7 +41,6 @@ export class FilmCardService {
   }
 
   setBestFilm(card: IFilmCard) {
-    console.log(card);
     let storedCard = JSON.parse(localStorage.getItem('card')!);
 
     if (storedCard?.id === card.id) {

@@ -10,15 +10,9 @@ import { FilmCardService } from '../services/film-card.service';
   styleUrls: ['./film-card.component.scss'],
 })
 export class FilmCardComponent implements OnInit {
-  // @Input() id!: number;
-  // @Input() name!: string;
-  // @Input() year!: number;
-  // @Input() description!: string;
-  // @Input() genre!: number[];
   @Input() card!: IFilmCard;
   bestFilmCard!: IFilmCard;
   genres = GENRES_MOCK;
-  // filmGenres: string[] = [];
 
   constructor(private filmCardService: FilmCardService) {}
   ngOnInit(): void {
@@ -35,23 +29,10 @@ export class FilmCardComponent implements OnInit {
       this.card.genre,
       (this.card.mappedGenres = [])
     );
-
-    // this.genres.forEach((item) => {
-    //   for (const [key, value] of Object.entries(item)) {
-    //     if (this.genre.includes(+key)) {
-    //       this.filmGenres.push(value);
-    //     }
-    //   }
-    // });
   }
 
   setBestFilm(e: Event) {
     e.stopPropagation();
-
     this.filmCardService.setBestFilm(this.card);
-
-    // this.filmCardService.bestFilmObservable.pipe(
-    //   map(card => )
-    // )
   }
 }

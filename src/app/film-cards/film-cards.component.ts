@@ -20,7 +20,6 @@ export class FilmCardsComponent implements OnInit {
   ngOnInit(): void {
     this.filmCardService.getFilmData().subscribe((data) => {
       this.filmCards = data;
-      console.log(this.filmCards);
     });
   }
 

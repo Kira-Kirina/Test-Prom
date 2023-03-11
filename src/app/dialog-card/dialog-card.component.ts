@@ -25,9 +25,13 @@ export class DialogCardComponent implements OnInit {
       this.card = this.data.card;
     }
 
-    this.filmCardService.getGenres(this.genres, this.card.genre, this.filmGenres);
+    this.filmCardService.getGenres(
+      this.genres,
+      this.card.genre,
+      this.filmGenres
+    );
   }
   setBestFilm() {
-    this.filmCardService.setBestFilm(this.card)
+    this.filmCardService.setBestFilm(this.card);
   }
 }
