@@ -7,6 +7,7 @@ import {
   tap,
   map,
   merge,
+  combineLatest,
 } from 'rxjs';
 import { IFilmCard } from 'src/models/film-card.interface';
 import data from '../../data.json';
@@ -65,5 +66,27 @@ export class FilmCardService {
   getBestFilm(): Observable<IFilmCard | null> {
     // JSON.parse(localStorage.getItem('card')!);
     return this.bestFilmObservable;
+  }
+
+  filterFilms(filmCards: Observable<IFilmCard[]>, filter: Observable<any>) {
+    return combineLatest([filmCards, filter]).pipe(
+      map(([filmCards, filter]) => {
+        return filmCards.filter((card) => {
+          // console.log(filter.title, 'filter.title');
+          // console.log(card.name, 'card.name');
+          if (filter.title) {
+            // console.log(
+            //   card.name.toLowerCase().indexOf(filter.title.toLowerCase()) >= 0
+            // );
+
+            return (
+              card.name.toLowerCase().indexOf(filter.title.toLowerCase()) >= 0
+            );
+          }
+          return card;
+        });
+      })
+    );
+  
   }
 }

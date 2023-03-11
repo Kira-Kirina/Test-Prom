@@ -1,24 +1,7 @@
 <div class="container">
   <section>
     <h2 class="title">Популярные фильмы</h2>
-    <div class="search__container">
-      <form [formGroup]="form" class="form">
-        <mat-form-field appearance="fill">
-          <!-- <mat-label>Все</mat-label> -->
-          <mat-select class="form-control" formControlName="genre">
-            <mat-option value="">Все</mat-option>
-            <mat-option [value]="genre" *ngFor="let genre of genres">{{
-              genre
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
 
-        <mat-form-field appearance="fill" class="form-control">
-          <mat-label>Введите название</mat-label>
-          <input matInput formControlName="title" />
-        </mat-form-field>
-      </form>
-    </div>
     <app-film-cards></app-film-cards>
   </section>
   <section>

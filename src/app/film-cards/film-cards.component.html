@@ -1,17 +1,25 @@
-<!-- <div class="films-card__container">
-  <app-film-card
-    *ngFor="let card of filmCards"
-    [id]="card.id"
-    [name]="card.name"
-    [year]="card.year"
-    [description]="card.description"
-    [genre]="card.genre"
-    (click)="openFilmCard(card)"
-  ></app-film-card>
-</div> -->
+<div class="search__container">
+  <form [formGroup]="form" class="form">
+    <mat-form-field appearance="fill">
+      <!-- <mat-label>Все</mat-label> -->
+      <mat-select class="form-control" formControlName="genre">
+        <mat-option value="">Все</mat-option>
+        <mat-option [value]="genre" *ngFor="let genre of genres">{{
+          genre
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-control">
+      <mat-label>Введите название</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+  </form>
+</div>
+
 <div class="films-card__container">
   <app-film-card
-    *ngFor="let card of filmCards"
+    *ngFor="let card of filteredFilmCards$ | async"
     [card]="card"
     (click)="openFilmCard(card)"
   ></app-film-card>
