@@ -13,7 +13,6 @@ import { GENRES_MOCK } from 'src/genres-mock';
 export class DialogCardComponent implements OnInit {
   card!: IFilmCard;
   genres = GENRES_MOCK;
-  // filmGenres: string[] = [];
   constructor(
     private filmCardService: FilmCardService,
     private dialogRef: MatDialogRef<DialogCardComponent>,

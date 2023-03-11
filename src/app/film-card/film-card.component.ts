@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { map } from 'rxjs';
 import { GENRES_MOCK } from 'src/genres-mock';
 import { IFilmCard } from 'src/models/film-card.interface';
 import { FilmCardService } from '../services/film-card.service';

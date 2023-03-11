@@ -1,8 +1,7 @@
 <div class="search__container">
   <form [formGroup]="form" class="form">
     <mat-form-field appearance="fill">
-      <!-- <mat-label>Все</mat-label> -->
-      <mat-select class="form-control" formControlName="genre">
+      <mat-select formControlName="genre">
         <mat-option value="">Все</mat-option>
         <mat-option [value]="genre" *ngFor="let genre of genres">{{
           genre
@@ -10,12 +9,14 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="form-control">
+    <mat-form-field appearance="fill">
       <mat-label>Введите название</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
   </form>
 </div>
+
+<h3 *ngIf="!(filteredFilmCards$ | async)?.length">Ничего не найдено!</h3>
 
 <div class="films-card__container">
   <app-film-card

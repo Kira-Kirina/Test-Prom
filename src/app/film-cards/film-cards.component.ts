@@ -33,6 +33,7 @@ export class FilmCardsComponent implements OnInit {
         this.genres.push(value);
       }
     });
+
     this.filmCards$ = this.filmCardService.getFilmData();
     this.filter$ = this.form.valueChanges.pipe(startWith(''));
 

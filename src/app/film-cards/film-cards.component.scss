@@ -1,17 +1,21 @@
 .films-card__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, 190px);
   column-gap: 10px;
   row-gap: 15px;
 }
 .form {
   display: flex;
   align-items: center;
-  // .form-control {
-  //   border: 1px solid rgba(121, 121, 121, 0.5);
-  //   border-radius: 6px;
-  // }
+
   & > *:not(:last-child) {
     margin-right: 8px;
   }
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border: 1px solid rgba(121, 121, 121, 0.5);
+  border-radius: 6px;
 }
