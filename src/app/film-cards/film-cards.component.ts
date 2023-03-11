@@ -34,9 +34,7 @@ export class FilmCardsComponent implements OnInit {
       }
     });
     this.filmCards$ = this.filmCardService.getFilmData();
-    this.filter$ = this.form.valueChanges
-      .pipe(startWith(''))
-      .pipe(tap((_) => console.log('sdasdasd')));
+    this.filter$ = this.form.valueChanges.pipe(startWith(''));
 
     this.filteredFilmCards$ = this.filmCardService.filterFilms(
       this.filmCards$,

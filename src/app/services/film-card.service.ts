@@ -74,19 +74,27 @@ export class FilmCardService {
         return filmCards.filter((card) => {
           // console.log(filter.title, 'filter.title');
           // console.log(card.name, 'card.name');
-          if (filter.title) {
+          if (filter.title || filter.genre) {
             // console.log(
             //   card.name.toLowerCase().indexOf(filter.title.toLowerCase()) >= 0
             // );
+            // console.log(filter);
+            // console.log(card.mappedGenres);
 
             return (
-              card.name.toLowerCase().indexOf(filter.title.toLowerCase()) >= 0
+              card.name.toLowerCase().indexOf(filter.title.toLowerCase()) >=
+                0 &&
+              card.mappedGenres?.some((genre) => {
+                // console.log(genre.toLowerCase() === filter.genre.toLowerCase());
+                console.log(filter);
+
+                return genre.toLowerCase() === filter.genre.toLowerCase();
+              })
             );
           }
           return card;
         });
       })
     );
-  
   }
 }
