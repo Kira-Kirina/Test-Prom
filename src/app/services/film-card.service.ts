@@ -9,8 +9,8 @@ import { GENRES_MOCK } from 'src/genres-mock';
 })
 export class FilmCardService {
   FILMS_MOCK: IFilmCard[] = data;
-  private beastFilmSubject = new Subject<IFilmCard>();
-  beastFilmObservable = this.beastFilmSubject.asObservable();
+  private bestFilmSubject = new Subject<IFilmCard | null>();
+  bestFilmObservable = this.bestFilmSubject.asObservable();
 
   constructor() {}
 
@@ -29,14 +29,22 @@ export class FilmCardService {
 
   setBestFilm(card: IFilmCard) {
     console.log(card);
-    const cardJSON = JSON.stringify(card);
-    localStorage.setItem('card', cardJSON);
-    this.beastFilmSubject.next(card);
+    let storedCard = JSON.parse(localStorage.getItem('card')!);
+
+    if (storedCard?.id === card.id) {
+      localStorage.removeItem('card');
+      card.isBest = false;
+      this.bestFilmSubject.next(null);
+    } else {
+      const cardJSON = JSON.stringify(card);
+      localStorage.setItem('card', cardJSON);
+      card.isBest = true;
+      this.bestFilmSubject.next(card);
+    }
   }
 
-  getBestFilm(): Observable<IFilmCard> {
+  getBestFilm(): Observable<IFilmCard | null> {
     // JSON.parse(localStorage.getItem('card')!);
-    return this.beastFilmObservable;
-    // return JSON.parse(localStorage.getItem('card')!);
+    return this.bestFilmObservable;
   }
 }

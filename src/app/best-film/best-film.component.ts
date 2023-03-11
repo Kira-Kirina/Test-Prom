@@ -8,7 +8,7 @@ import { FilmCardService } from '../services/film-card.service';
   styleUrls: ['./best-film.component.scss'],
 })
 export class BestFilmComponent implements OnInit {
-  card!: IFilmCard;
+  card!: IFilmCard | null;
 
   constructor(private filmCardService: FilmCardService) {}
   ngOnInit(): void {

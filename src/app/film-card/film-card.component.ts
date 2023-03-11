@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { GENRES_MOCK } from 'src/genres-mock';
 import { IFilmCard } from 'src/models/film-card.interface';
 import { FilmCardService } from '../services/film-card.service';
@@ -46,7 +47,11 @@ export class FilmCardComponent implements OnInit {
 
   setBestFilm(e: Event) {
     e.stopPropagation();
-    this.card.isBest = true;
+
     this.filmCardService.setBestFilm(this.card);
+
+    // this.filmCardService.bestFilmObservable.pipe(
+    //   map(card => )
+    // )
   }
 }
