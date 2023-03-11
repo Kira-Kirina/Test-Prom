@@ -28,9 +28,7 @@ export class FilmCardService {
   getFilmData(): Observable<IFilmCard[]> {
     return this.filmsObservable;
   }
-  // getFilmData(): Observable<IFilmCard[]> {
-  //   return of(this.FILMS_MOCK);
-  // }
+
   getGenres(genres = GENRES_MOCK, genre: number[], filmGenres: string[]) {
     genres.forEach((item) => {
       for (const [key, value] of Object.entries(item)) {
@@ -75,8 +73,10 @@ export class FilmCardService {
           if (filter.title || filter.genre) {
             return (
               (!filter.title ||
-                card.name.toLowerCase().indexOf(filter.title.toLowerCase()) >=
-                  0) &&
+                card.name
+                  .toLowerCase()
+                  .trim()
+                  .indexOf(filter.title.toLowerCase().trim()) >= 0) &&
               (!filter.genre ||
                 card.mappedGenres?.some((genre) => {
                   return genre.toLowerCase() === filter.genre.toLowerCase();
